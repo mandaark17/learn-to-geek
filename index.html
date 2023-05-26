@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./assets/styles.css" /> 
-    <title>Rock, Paper, Scissors, Lizard, Spock!</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css" />
+  <title>Learn-2-Geek</title>
 </head>
+
 <body>
-    <header>
-        <h1>Rock, Paper, Scissors, Lizard, Spock!</h1>
-    </header>
-    <div class="start-game">
-        <h2>Please click a button to play against the computer.</h2>
-        <div id="choices">
-            <button class="choice-button">Rock</button>
-            <button class="choice-button">Paper</button>
-            <button class="choice-button">Scissors</button>
-            <button class="choice-button">Lizard</button>
-            <button class="choice-button">Spock</button>
-        </div>
+  <header>
+    <div class="logo">
+      <img src="./assets/img/logo.png" alt="Logo">
     </div>
-    <div class="results">
-        <h2 id="user-choice">You threw: </h2>
-        <h2 id="computer-choice">Computer threw: </h2>
-        <h2 id="winner"></h2>
-        <h2 id="total-wins"></h2>
+  </header>
+
+<!--- Main Section (Includes 3 Columns) --->
+
+  <section class="main-container">
+
+<!--- Main Heading (Col 1) --->
+
+    <div class= "container">
+      <div class= "main-heading">
+        <h1>Learn About <br> your favorite <br> Board Games!</h1>
+      </div>
+      
+<!--- Search Box (Col 1) --->
+
+    <div class="search-box">
+      <input type="text" class="search-input" placeholder="Name your Game Board!">
+      <button class="search-button">Search</button>
+    </div> 
+  </div>   
+    
+
+
+<!--- Video Container (Col 2) --->
+
+    <div class= "video-container">
+      <div class= "heading-container">
+        <h2 class= "heading-bg">Cool Video!</h2>
     </div>
-    <script src="./assets/script.js"></script>
+
+<!--- Video Placeholder --->    
+    <div class="video-placeholder">
+      </div>      
+      </div>
+
+
+<!--- Facts Container (Col 3) --->
+
+    <div class= "facts-container">
+      <div class= "heading-container">
+        <h2 class= heading-bg>Cool Facts!</h2>
+    </div>
+
+<!--- Facts Placeholder --->      
+    <div class="facts-placeholder">
+       </div>      
+       </div>
+
+
+  </section>
+
+<script src="./assets/script.js"></script>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>:: 2023 All rights Reserved - Learn2Geek ::</p>
+ </footer>
 </body>
 </html>
