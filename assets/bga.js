@@ -1,17 +1,20 @@
-var apiKey = "ljRW2RzyOi";
+var apiKey = "9Zh7Ee2hMK";
 var apiUrl = `https://api.boardgameatlas.com/api/search?client_id=${apiKey}&limit=100&sort=popularity`;
-var searchForm = document.getElementById("searchForm");
+var searchButton = document.getElementsByClassName("search-button")[0];
 var gameInput = document.getElementById("gameInput");
 var resultsContainer = document.getElementById("resultsContainer");
 var facts = document.getElementById("facts");
+var searchInput = document.getElementsByClassName("search-input");
+var factsContainer = document.getElementsByClassName("facts-placeholder")[0];
 
-searchForm.addEventListener("submit", function (event) {
+searchButton.addEventListener("click", function (event) {
   event.preventDefault();
-  const gameName = gameInput.value;
+  const gameName = searchInput[0].value;
   if (gameName === "") {
-    resultsContainer.innerHTML = "Please enter a game name.";
+    factsContainer.innerHTML = "Please enter a game name.";
     return;
   }
+
 
   function getGameInfo() {
     fetch(apiUrl + "&name=" + gameName)
@@ -20,22 +23,26 @@ searchForm.addEventListener("submit", function (event) {
       })
       .then(function (data) {
         if (data.games.length === 0) {
-          resultsContainer.innerHTML = "No results found.";
+          factsContainer.innerHTML = "No results found.";
         } else {
           console.log(data);
-          facts.textContent = data.games[0].handle;
+          factsContainer.textContent = data.games[0].handle;
           var image = document.createElement("img");
           if (data.games[0].description_preview) {
-            facts.append(data.games[0].description_preview);
+            factsContainer.append(data.games[0].description_preview);
           }
           image.src = data.games[0].images.thumb;
-          facts.appendChild(image);
-          facts.append(" Year Published: " + data.games[0].year_published);
-          facts.append(" Players: " + data.games[0].players);
-          if (data.games[0].msrp_text) {
-            facts.append(" Cost: " + data.games[0].msrp_text);
+          factsContainer.appendChild(image);
+          factsContainer.append(" Year Published: " + data.games[0].year_published);
+          if (data.games[0].players) {
+          factsContainer.append(" Players: " + data.games[0].players);
           }
-          facts.append(" Minimum Age: " + data.games[0].min_age);
+          if (data.games[0].msrp_text) {
+            factsContainer.append(" Cost: " + data.games[0].msrp_text);
+          }
+          if (data.games[0].min_age) {
+          factsContainer.append(" Minimum Age: " + data.games[0].min_age);
+          }
         }
       });
   }
