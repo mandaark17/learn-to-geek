@@ -1,33 +1,265 @@
-:root {
-    --background: linear-gradient(#5F939A, #3A6351, #A0937D, #F2EDD7);
+* {
+    box-sizing: border-box;
+    margin: 0;  
+ 
 }
 
 body {
-    background-image: var(--background);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
+   
+  background-image: url(./img/background.png);
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: 'Ubuntu', sans-serif;
+  min-height: 100vh;
+
+
+/* ---- Header and Logo ---- */  
 }
-button {
-    border-radius: 5px;
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
 }
-button:hover {
-    transform: translate(5px, -10%);
-    box-shadow: -5px 5px 5px #A0937D;
+
+.logo img {
+  display: inline-block;
+  padding: 10px;
+  height: 150px; 
+  width: auto; 
 }
-#choices {
-    display: flex;
-    justify-content: center;
+
+/*--- Main Heading (Col 1) ---*/  
+
+.main-container {
+  display: flex;
+  align-items: center;  
+  
 }
-.start-game h2{
-    display: flex;
-    justify-content: center;
+
+.container { 
+  padding:100px;
+  margin: 20px auto;
+  width: 100%;
+  flex: 1;
 }
-header {
-    display: flex;
-    justify-content: center;
+
+.main-heading {
+  padding: 10px;
 }
-.results h2 {
-    display: flex;
-    justify-content: center;
+
+.main-heading h1 {
+  font-size: 90px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+  color: white; 
+  
 }
+
+/*--- Search Box (Col 1) ---*/ 
+
+.search-box {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  
+}
+
+.search-input {
+  padding: 15px;
+  font-size: 35px;
+  border: 0px solid #07133D;
+  border-radius: 5px 0 0 5px;
+  width: auto;
+}
+
+.search-button {
+  padding: 10px 20px;
+  font-size: 42px;
+  border: 1px solid white;
+  border-radius: 0 5px 5px 0;
+  background-color: #07133D;
+  color: white;
+  cursor: pointer;
+}
+
+.search-input::placeholder {
+  color: gray;
+}
+
+/*--- Video Container (Col 2) ---*/ 
+
+.video-container {
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+}
+
+.heading-container {   
+  margin: 30px auto;
+  width: 100%;
+  align-content: center;
+
+}
+
+.video-placeholder {
+  width: 450px;
+  height: 300px;
+  background-color: #07133D;
+  border-radius: 5px 0 0 5px;  
+}
+
+/*--- Facts Container (Col 3) ---*/ 
+
+.facts-container {
+  display: flex;
+  padding: 30px;
+  flex-direction: column;
+}
+
+.heading-container {   
+  margin: 30px auto;
+  width: 100%;
+  align-content: center;
+
+}
+
+.facts-placeholder {
+    
+  width: 450px;
+  height: 300px;
+  background-color: #07133D;
+  border-radius: 5px 0 0 5px;
+  
+}
+
+/* These apply to both headers */
+
+.heading-bg {
+  display: inline-block;
+  padding: 10px;
+  width: 450px;
+  border: 2px solid white;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+ 
+}
+
+h2 {
+
+  font-size: 35px;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  clear: both;
+  font-size: 12px;
+  text-align: center;
+}
+.footer p {
+  color:white;
+}
+
+
+/*------------------Media Queries  Work in Process------------*/
+
+
+@media screen and (max-width: 768px) {
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  position: absolute; 
+  top: 0;
+  left: 0;
+  height: auto;
+  width: 100%;     
+  z-index: 9999;
+  margin-bottom: 20px; 
+  }
+
+.logo img {
+  height: auto;
+  max-width: 100%;
+}
+
+.main-container {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 20px;
+  padding: 0; 
+  margin: 0;
+  position: relative; 
+}
+
+.container {
+  margin: 0;
+  padding: 130px;
+  width: 100%; 
+}
+
+.search-box {
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 10px 115px;
+  font-size: 28px;
+  border: 0px solid #07133D;
+  border-radius: 5px 0 0 5px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.search-button {
+  padding: 1px 5px;
+  font-size: 42px;
+  border: 1px solid white;
+  border-radius: 0 5px 5px 0;
+  background-color: #07133D;
+  color: white;
+  cursor: pointer;
+}
+
+
+.main-heading h1 {
+  display: none;
+  font-size: 15px;
+}
+
+.footer {
+  position: inherit;
+}
+
+}
+
