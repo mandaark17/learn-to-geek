@@ -37,24 +37,31 @@ searchButton.addEventListener("click", function (event) {
             return capitalizedWords.join(" ");
           }
           console.log(data);
-          factsContainer.textContent = formatGameName(gameTitle);
+          factsContainer.textContent = formatGameName(gameTitle) + ": ";
+          factsContainer.append(document.createElement("br"));
           var image = document.createElement("img");
           if (data.games[0].description_preview) {
             factsContainer.append(data.games[0].description_preview);
+            factsContainer.append(document.createElement("br"));
           }
           image.src = data.games[0].images.thumb;
           factsContainer.appendChild(image);
+          factsContainer.append(document.createElement("br"));
           factsContainer.append(
             " Year Published: " + data.games[0].year_published
           );
+          factsContainer.append(document.createElement("br"));
           if (data.games[0].players) {
             factsContainer.append(" Players: " + data.games[0].players);
+            factsContainer.append(document.createElement("br"));
           }
           if (data.games[0].msrp_text) {
             factsContainer.append(" Cost: " + data.games[0].msrp_text);
+            factsContainer.append(document.createElement("br"));
           }
           if (data.games[0].min_age) {
             factsContainer.append(" Minimum Age: " + data.games[0].min_age);
+            factsContainer.append(document.createElement("br"));
           }
         }
       });

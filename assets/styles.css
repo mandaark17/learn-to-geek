@@ -133,7 +133,8 @@ body {
   height: 300px;
   background-color: #07133D;
   border-radius: 5px 0 0 5px;
-  
+  color: white;
+
 }
 
 /* These apply to both headers */
