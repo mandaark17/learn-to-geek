@@ -1,9 +1,7 @@
 var apiKey = "9Zh7Ee2hMK";
 var apiUrl = `https://api.boardgameatlas.com/api/search?client_id=${apiKey}&limit=100&sort=popularity`;
 var searchButton = document.getElementsByClassName("search-button")[0];
-// var gameInput = document.getElementById("gameInput");
 var resultsContainer = document.getElementById("resultsContainer");
-// var facts = document.getElementById("facts");
 var searchInput = document.getElementsByClassName("search-input");
 var factsContainer = document.getElementsByClassName("facts-placeholder")[0];
 
@@ -14,7 +12,7 @@ searchButton.addEventListener("click", function (event) {
     factsContainer.innerHTML = "Please enter a game name.";
     return;
   }
-
+  console.log(gameName);
   function getGameInfo() {
     fetch(apiUrl + "&name=" + gameName)
       .then(function (response) {
