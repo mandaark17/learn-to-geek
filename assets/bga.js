@@ -73,7 +73,7 @@ var youtubeResult = document.querySelector('.video-placeholder')
 
 function getApi() {
   // fetch request gets a list of all the repos for the node.js organization
-  var textInput = searchEL.value
+  var textInput = 'how to play ' + searchEL.value;
   console.log(textInput)
   var requestUrl = 'https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=50&q=' + textInput + '&type=video&key=AIzaSyDaxJmlfru9owz0k1A_8YWMKKKMV6c_b1U';
 
@@ -82,7 +82,7 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-      for( var i = 0; i < 10; i++){
+      for( var i = 0; i < 1; i++){
         var ulEL = document.createElement ('ul')
         var titleEL = document.createElement ('li')
         var linkEL = document.createElement ('a')
@@ -94,23 +94,6 @@ function getApi() {
         ulEL.appendChild(titleEL)
         ulEL.appendChild(linkEL)
       }
-      // //Loop over the data to generate a table, each table row will have a link to the repo url
-      // for (var i = 0; i < data.length; i++) {
-      //   // Creating elements, tablerow, tabledata, and anchor
-      //   var createTableRow = document.createElement('tr');
-      //   var tableData = document.createElement('td');
-      //   var link = document.createElement('a');
-
-      //   // Setting the text of link and the href of the link
-      //   link.textContent = data[i].html_url;
-      //   link.href = data[i].html_url;
-
-      //   // Appending the link to the tabledata and then appending the tabledata to the tablerow
-      //   // The tablerow then gets appended to the tablebody
-      //   tableData.appendChild(link);
-      //   createTableRow.appendChild(tableData);
-      //   tableBody.appendChild(createTableRow);
-      // }
     })
     .catch(function(err){
       console.log("something went wrong")
