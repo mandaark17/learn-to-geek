@@ -143,10 +143,12 @@ body {
 .facts-placeholder {
   background-color: #07133D;
   border-radius: 5px 0 0 5px;
+
   height: 600px;
   width: 90%;
   margin-left: 5%;
   
+  color: white;
 }
 
 /* These apply to both headers */
