@@ -1,4 +1,4 @@
-var apiKey = "9Zh7Ee2hMK";
+var apiKey = "E544j3UXCv";
 var apiUrl = `https://api.boardgameatlas.com/api/search?client_id=${apiKey}&limit=100&sort=popularity`;
 var searchButton = document.getElementsByClassName("search-button")[0];
 var resultsContainer = document.getElementById("resultsContainer");
