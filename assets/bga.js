@@ -75,7 +75,6 @@ function getApi() {
   // fetch request gets a list of all the repos for the node.js organization
   var textInput = 'how to play ' + searchEL.value;
   var youtubeApi = 'AIzaSyA_4MqgADoM6dEZQymSJuIpuFZA1TxuvsM';
-  console.log(textInput)
   var requestUrl = 'https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=50&q=' + textInput + '&type=video&key=' + youtubeApi;
 
   fetch(requestUrl)
@@ -83,16 +82,12 @@ function getApi() {
       return response.json();
     })
     .then(function (data) {
-        var ulEL = document.createElement ('ul')
-        var titleEL = document.createElement ('li')
-        var linkEL = document.createElement ('a')
-        titleEL.textContent = data.items[0].snippet.title
-        linkEL.href = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId
-        linkEL.textContent = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId
-        console.log(linkEL)
-        youtubeResult.appendChild(ulEL)
-        ulEL.appendChild(titleEL)
-        ulEL.appendChild(linkEL)
+        var frameEl = document.createElement ('iframe')
+        var embedLink = "https://www.youtube.com/embed/"+data.items[0].id.videoId
+        var videoContainer= document.querySelector('.video-placeholder')
+  
+        frameEl.setAttribute("src", embedLink)
+        videoContainer.appendChild(frameEl)
     })
     .catch(function(err){
       console.log("something went wrong")
