@@ -4,6 +4,20 @@ var searchButton = document.getElementsByClassName("search-button")[0];
 var resultsContainer = document.getElementById("resultsContainer");
 var searchInput = document.getElementsByClassName("search-input");
 var factsContainer = document.getElementsByClassName("facts-placeholder")[0];
+var gameArray = [];
+var datalist = document.getElementById("history1");
+
+window.addEventListener("load", function () {
+  var storedGameArray = localStorage.getItem("gameArray");
+  if (storedGameArray) {
+    gameArray = JSON.parse(storedGameArray);
+  }
+  for (var i = 0; i < gameArray.length; i++) {
+    var option = document.createElement("option");
+    option.value = gameArray[i];
+    datalist.appendChild(option);
+  }
+});
 
 searchButton.addEventListener("click", function (event) {
   event.preventDefault();
@@ -60,6 +74,19 @@ searchButton.addEventListener("click", function (event) {
           if (data.games[0].min_age) {
             factsContainer.append(" Minimum Age: " + data.games[0].min_age);
             factsContainer.append(document.createElement("br"));
+          }
+        }
+
+        if (!gameArray.includes(gameName)) {
+          gameArray.push(gameName); // Add the game name directly to the gameArray
+          localStorage.setItem("gameArray", JSON.stringify(gameArray)); // Save the gameArray to local storage
+          console.log(gameArray);
+  
+          datalist.innerHTML = '';
+          for (i = 0; i < gameArray.length; i++) {
+              var option = document.createElement("option")
+              option.value = gameArray[i];
+              datalist.appendChild(option);
           }
         }
       });
