@@ -103,6 +103,9 @@ fetchButton.addEventListener('click',function(){
   youtubeResult.textContent = ""
 })
 
+
+
+
 // LocalStorage History Search
 
 var historySearch = JSON.parse(localStorage.getItem("search-history")) || []
@@ -153,8 +156,9 @@ document.querySelectorAll('.btn').forEach(function(btn){
   btn.addEventListener('click',function(event){
       var InputHis = this.dataset.search
       console.log(InputHis)
+
+    // youtube search history showing the result when clicking on history button
       var youtubeApi = 'AIzaSyBEE5Yf5ZAP4gPVsqsVja8djNhyzBQel84';
-      // var GameUrl = apiUrl + "&name=" + InputHis
       var requestUrl = 'https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=50&q=' + InputHis + '&type=video&key=' + youtubeApi;
 
       fetch(requestUrl)
@@ -173,7 +177,62 @@ document.querySelectorAll('.btn').forEach(function(btn){
         console.log("something went wrong")
       })  
       youtubeResult.textContent = ""
-      // getGameInfo(GameUrl)
+
+
+    // boardgame search history showing the result when clicking on history button
+      var gameName = this.dataset.search
+      function getGameInfo() {
+        fetch(apiUrl + "&name=" + gameName)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (data) {
+            if (data.games.length === 0) {
+              factsContainer.innerHTML = "No results found.";
+            } else {
+              //formats the title of the game to have all first letters Uppercase
+              var gameTitle = formatGameName(data.games[0].handle);
+    
+              function formatGameName() {
+                var words = gameName.split(" ");
+                var capitalizedWords = words.map(function (word) {
+                  var firstLetter = word.charAt(0).toUpperCase();
+                  var restOfWord = word.slice(1);
+                  return firstLetter + restOfWord;
+                });
+                return capitalizedWords.join(" ");
+              }
+              console.log(data);
+              factsContainer.textContent = formatGameName(gameTitle) + ": ";
+              factsContainer.append(document.createElement("br"));
+              var image = document.createElement("img");
+              if (data.games[0].description_preview) {
+                factsContainer.append(data.games[0].description_preview);
+                factsContainer.append(document.createElement("br"));
+              }
+              image.src = data.games[0].images.thumb;
+              factsContainer.appendChild(image);
+              factsContainer.append(document.createElement("br"));
+              factsContainer.append(
+                " Year Published: " + data.games[0].year_published
+              );
+              factsContainer.append(document.createElement("br"));
+              if (data.games[0].players) {
+                factsContainer.append(" Players: " + data.games[0].players);
+                factsContainer.append(document.createElement("br"));
+              }
+              if (data.games[0].msrp_text) {
+                factsContainer.append(" Cost: " + data.games[0].msrp_text);
+                factsContainer.append(document.createElement("br"));
+              }
+              if (data.games[0].min_age) {
+                factsContainer.append(" Minimum Age: " + data.games[0].min_age);
+                factsContainer.append(document.createElement("br"));
+              }
+            }
+          });
+      }
+      getGameInfo();
 
   })
 })
