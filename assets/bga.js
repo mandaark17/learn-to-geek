@@ -1,5 +1,5 @@
-var apiKey = "E544j3UXCv";
-var apiUrl = `https://api.boardgameatlas.com/api/search?client_id=${apiKey}&limit=100&sort=popularity`;
+var gameApi = "E544j3UXCv";
+var apiUrl = `https://api.boardgameatlas.com/api/search?client_id=${gameApi}&limit=100&sort=popularity`;
 var searchButton = document.getElementsByClassName("search-button")[0];
 var resultsContainer = document.getElementById("resultsContainer");
 var searchInput = document.getElementsByClassName("search-input");
@@ -74,26 +74,25 @@ var youtubeResult = document.querySelector('.video-placeholder')
 function getApi() {
   // fetch request gets a list of all the repos for the node.js organization
   var textInput = 'how to play ' + searchEL.value;
+  var youtubeApi = 'AIzaSyA_4MqgADoM6dEZQymSJuIpuFZA1TxuvsM';
   console.log(textInput)
-  var requestUrl = 'https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=50&q=' + textInput + '&type=video&key=AIzaSyDaxJmlfru9owz0k1A_8YWMKKKMV6c_b1U';
+  var requestUrl = 'https://www.googleapis.com/youtube/v3/search?part=id%2Csnippet&maxResults=50&q=' + textInput + '&type=video&key=' + youtubeApi;
 
   fetch(requestUrl)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
-      for( var i = 0; i < 1; i++){
         var ulEL = document.createElement ('ul')
         var titleEL = document.createElement ('li')
         var linkEL = document.createElement ('a')
-        titleEL.textContent = data.items[i].snippet.title
-        linkEL.href = "https://www.youtube.com/watch?v=" + data.items[i].id.videoId
-        linkEL.textContent = "https://www.youtube.com/watch?v=" + data.items[i].id.videoId
+        titleEL.textContent = data.items[0].snippet.title
+        linkEL.href = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId
+        linkEL.textContent = "https://www.youtube.com/watch?v=" + data.items[0].id.videoId
         console.log(linkEL)
         youtubeResult.appendChild(ulEL)
         ulEL.appendChild(titleEL)
         ulEL.appendChild(linkEL)
-      }
     })
     .catch(function(err){
       console.log("something went wrong")
