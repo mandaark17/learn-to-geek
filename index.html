@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <title>Learn-2-Geek</title>
 </head>
 
@@ -17,6 +18,7 @@
     <div class="logo">
       <img src="./assets/img/logo.png" alt="Logo">
     </div>
+    
   </header>
 
 <!--- Main Section (Includes 3 Columns) --->
@@ -71,10 +73,35 @@
 
   </section>
 
+<div id="modal-js-example" class="modal">
+  <div class="modal-background"></div>
+
+  <div class="modal-content">
+    <div class="box" >
+      <p><strong>Alec</strong>: Project Organizer, UI/UX <br>
+
+        <strong>Alexis</strong>: API manager, Marketing Manager<br>
+        
+        <strong>Bao</strong>: Function Senior, JavaScript programmer<br>
+        
+        <strong>Carlos</strong>: Head of Design, UI/UX<br>
+        
+        <strong>Nick</strong>: API manager, Software Debugger</p>
+      <!-- Your content -->
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close"></button>
+</div>
+
 <script src="./assets/bga.js"></script>
 
 <!-- Footer -->
-<footer class="footer">
+<footer>
+  <button class="js-modal-trigger" data-target="modal-js-example">
+    Contributors
+  </button>
+  
   <p>:: 2023 All rights Reserved - Learn2Geek ::</p>
  </footer>
 </body>

@@ -1,3 +1,4 @@
+// Declarations
 var gameApi = "E544j3UXCv";
 var apiUrl = `https://api.boardgameatlas.com/api/search?client_id=${gameApi}&limit=100&sort=popularity`;
 var searchButton = document.getElementsByClassName("search-button")[0];
@@ -7,6 +8,7 @@ var factsContainer = document.getElementsByClassName("facts-placeholder")[0];
 var gameArray = [];
 var datalist = document.getElementById("history1");
 
+//Board Game API
 window.addEventListener("load", function () {
   var storedGameArray = localStorage.getItem("gameArray");
   if (storedGameArray) {
@@ -94,6 +96,7 @@ searchButton.addEventListener("click", function (event) {
   getGameInfo();
 });
 
+// YouTube API
 var fetchButton = document.querySelector('.search-button');
 var searchEL = document.querySelector('.search-input')
 var youtubeResult = document.querySelector('.video-placeholder')
@@ -124,3 +127,49 @@ fetchButton.addEventListener('click',function(){
   getApi()
   youtubeResult.textContent = ""
 })
+
+// Modal for contributors
+document.addEventListener('DOMContentLoaded', () => {
+  // Functions to open and close a modal
+  function openModal($el) {
+    $el.classList.add('is-active');
+  }
+
+  function closeModal($el) {
+    $el.classList.remove('is-active');
+  }
+
+  function closeAllModals() {
+    (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+      closeModal($modal);
+    });
+  }
+
+  // Add a click event on buttons to open a specific modal
+  (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+    const modal = $trigger.dataset.target;
+    const $target = document.getElementById(modal);
+
+    $trigger.addEventListener('click', () => {
+      openModal($target);
+    });
+  });
+
+  // Add a click event on various child elements to close the parent modal
+  (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+    const $target = $close.closest('.modal');
+
+    $close.addEventListener('click', () => {
+      closeModal($target);
+    });
+  });
+
+  // Add a keyboard event to close all modals
+  document.addEventListener('keydown', (event) => {
+    const e = event || window.event;
+
+    if (e.keyCode === 27) { // Escape key
+      closeAllModals();
+    }
+  });
+});
