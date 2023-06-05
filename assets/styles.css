@@ -1,20 +1,25 @@
 * {
     box-sizing: border-box;
-    margin: 0;  
+    
 }
 
-body {
-   
+body{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   background-image: url(./img/background.png);
   background-size: cover;
-  margin: 0;
-  padding: 0;
   font-family: 'Ubuntu', sans-serif;
-  min-height: 100vh;
-
-
-/* ---- Header and Logo ---- */  
+ 
 }
+
+.is-clipped {
+  overflow-y: auto;
+  position: relative;
+  transform: translateZ(0);
+}
+
+
 .header {
   position: fixed;
   top: 0;
@@ -23,47 +28,43 @@ body {
   z-index: 999;
 }
 
-.logo img {
-  display: inline-block;
-  padding: 10px;
-  height: 150px; 
-  width: auto; 
+.logo img{    
+    padding: 10px;
+    height: 150px;    
 }
 
-/*--- Main Heading (Col 1) ---*/  
-
-.main-container {
+.main-container{
   display: flex;
-  align-items: center;  
-  
+  flex-grow: 1;
+  align-items: center;
+  gap: 1em; 
+  padding: 0 20px;
+
 }
 
-.container { 
-  padding:100px;
-  margin: 20px auto;
-  width: 100%;
-  flex: 1;
+
+.container{
+  margin-left: 10px;
 }
 
-.main-heading {
-  padding: 10px;
+.main-heading{
+width: auto;
+
 }
+
 
 .main-heading h1 {
   font-size: 50px;
   font-weight: 700;
-  line-height: 1.2;
-  margin: 0;
+  line-height: 1.2;  
   color: white; 
   
 }
 
-/*--- Search Box (Col 1) ---*/ 
-
 .search-box {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  margin-top: 15px;
   
 }
 
@@ -86,104 +87,84 @@ body {
   cursor: pointer;
 }
 
-.js-modal-trigger {
-  padding: 10px 20px;
-  font-size: 16px;
-  border: 1px solid white;
-  border-radius: 10px;
-  background-color: #07133D;
-  color: white;
-  cursor: pointer;
-}
-
 .search-input::placeholder {
   color: gray;
 }
 
-/*--- Video Container (Col 2) ---*/ 
-
-.video-container {
-  display: flex;
-  padding-right: 60px;
-  flex-direction: column;
-}
-
 .video-placeholder {
   width: 500px;
-  height: 500px;
+  height: 350px;
   background-color: #07133D;
+  border: 2px solid white;
   border-radius: 10px;  
-  color: black;
-  flex-wrap: flex;
-  font-size: 15px;
 }
+
 .video-placeholder ul {
   padding-left: 20px;
   padding-top: 20px;
 }
 
-.video-placeholder div li {
+.video-placeholder div li {  
   font-weight: bold;
 }
-/*--- Facts Container (Col 3) ---*/ 
 
-.facts-container {
-  display: inline;
-  padding: 30px;
-  flex-wrap: flex;
-  width: 100%;
-  text-align: center;
-}
-
-.heading-container {   
-  display: flex;
-  margin: 30px auto;
-  width: 100%;
-  align-items: center;
-  padding-left: 30px;
+.heading-container { 
+ margin: 30px auto;
 }
 
 .facts-placeholder {
-  background-color: #07133D;
-  border-radius: 10px;
-  height: 500px;
   width: 500px;
-  color: white;
-  overflow: auto;
+  height: 350px;
+  border: 2px solid white;
+  background-color: #ffff;
+  border-radius: 10px; 
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: #07133D rgb(181, 61, 61);
+  
 }
 
-/* These apply to both headers */
+.facts-placeholder::-webkit-scrollbar {
+  width: 8px;
+}
 
-.heading-bg {
-  display: inline-block;
-  padding: 10px;
-  width: 450px;
-  border: 2px solid white;
-  border-radius: 10px;
+.facts-placeholder::-webkit-scrollbar-track {
+  background-color: white;
+}
+
+.facts-placeholder::-webkit-scrollbar-thumb {
   background-color: #07133D;
-  color: white;
-  text-align: center;
-  font-size: 36px;
-  font-style: bold;
+}
+
+
+.heading-bg{    
+    padding: 10px;
+    width: 500px;
+    background: #07133D;
+    border: 2px solid white;
+    border-radius: 10px;   
+    text-align: center;
+    
 }
 
 h2 {
   font-size: 35px;
-  font-weight: 700;
-  margin: 0;
+  font-weight: 700; 
   color: white;
 }
 
+
 footer {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px;
-  clear: both;
-  font-size: 12px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
+  margin-top: 50px;
 }
+
 footer p {
+  padding: 20px;
   color:white;
   font-size: 15px;
 }
@@ -193,94 +174,127 @@ iframe {
   height: 100%;
 }
 
-
-/*------------------Media Queries  Work in Process------------*/
-
-
-@media screen and (max-width: 768px) {
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  margin: 0;
-}
-
-.wrapper {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.logo {
-  position: absolute; 
-  top: 0;
-  left: 0;
-  height: auto;
-  width: 100%;     
-  z-index: 9999;
-  margin-bottom: 20px; 
-  }
-
-.logo img {
-  height: auto;
-  max-width: 100%;
-}
-
-.main-container {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 20px;
-  padding: 0; 
-  margin: 0;
-  position: relative; 
-}
-
-.container {
-  margin: 0;
-  padding: 130px;
-  width: 100%; 
-}
-
-.search-box {
-  margin-top: 10px;
-  width: 100%;
-  justify-content: center;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.search-input {
-  padding: 10px 115px;
-  font-size: 28px;
-  border: 0px solid #07133D;
-  border-radius: 5px 0 0 5px;
-  box-sizing: border-box;
-  width: 100%;
-}
-
-.search-button {
-  padding: 1px 5px;
-  font-size: 42px;
+.js-modal-trigger {
+  padding: 10px 20px;
+  width: 200px;
+  font-size: 16px;
   border: 1px solid white;
-  border-radius: 0 5px 5px 0;
+  border-radius: 10px;
   background-color: #07133D;
   color: white;
   cursor: pointer;
 }
 
 
-.main-heading h1 {
-  display: none;
-  font-size: 15px;
+
+/*----------iPad Air, iPad Mini----------*/
+
+@media screen and (max-width: 820px) {  
+  body {
+   background-size:cover;
+   background-position: 10%;
+   height: auto;   
+  }  
+
+  .logo img{    
+   padding: 10px;
+   height: auto;    
+  }
+
+  .main-container{
+   flex-direction: column;  
+   align-items: center;
+   padding: 0px;   
+  }
+
+  .container{ 
+   margin-left: 0px;
+   padding: 5px;   
+  }
+
+  .main-heading h1{
+   font-size: 45px;
+   font-weight: 400;    
+   color: white;
+   margin-right: 10px;
+  }
+
+  .search-box {
+   display: flex;
+   justify-content: center;
+   margin: 25px 10px;
+  }
+
+  .search-input {
+   padding: 12px;
+   font-size: 40px;  
+   width: 100%;
+
+  }
+
+  .video-container{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100% ;
+  }
+ 
+  .heading-bg{
+   width: 700px;
+  }
+
+  .video-placeholder{
+   width: 700px;
+   height: 500px; 
+  }
+
+.facts-container{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 100% ;
+  }
+
+  .facts-placeholder{
+   width: 700px;
+   height: 500px; 
+  }
 }
 
-.footer {
-  position: inherit;
-}
+/*----------iPhone SE, XR, 12 Pro----------*/
 
-}
+@media screen and (max-width: 414px) {  
+  
+  .logo img{    
+    padding: 10px;
+    height: auto;    
+  }
 
+  .main-heading h1{
+    font-size: 30px;    
+    padding-left: 10px; 
+  }
+
+  .search-input {
+   padding: 5px;
+   font-size: 30px; 
+
+  }
+.search-button {
+  padding: 0px 5px;
+  font-size: 36px; 
+} 
+  .heading-bg{
+   width: 350px;
+  }
+
+  .video-placeholder {
+    width: 350px;
+    height: 300px; 
+  }
+
+  .facts-placeholder {
+    width: 350px;
+    height: 300px; 
+  }
+}
