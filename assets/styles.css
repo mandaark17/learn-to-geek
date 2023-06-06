@@ -116,12 +116,13 @@ width: auto;
   width: 500px;
   height: 350px;
   border: 2px solid white;
-  background-color: #ffff;
+  background-color: #07133D;
   border-radius: 10px; 
   overflow-y: scroll;
   scrollbar-width: thin;
   scrollbar-color: #07133D rgb(181, 61, 61);
-  
+  color: white;
+  text-align: center;
 }
 
 .facts-placeholder::-webkit-scrollbar {
